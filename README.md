@@ -90,7 +90,7 @@ _The variables required in order for the module to be successfully called from t
 | **_extended\_statistic_** | _The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100._ | _string_ | **_Optional_** | **_null_** |
 | **_treat\_missing\_data_** | _Sets how this alarm is to handle missing data points. The following values are supported:_ **_missing_**_,_ **_ignore_**_,_ **_breaching_** _and_ **_notBreaching_**_. Defaults to_ **_missing_** | _string_ | **_Optional_** | **_missing_** |
 | **_evaluate\_low\_sample\_count\_percentiles_** | _Used only for alarms based on percentiles. If you specify ignore, the alarm state will not change during periods with too few data points to be statistically significant. If you specify evaluate or omit this parameter, the alarm will always be evaluated and possibly change state no matter how many data points are available. The following values are supported:_ **_ignore_**_, and_ **_evaluate_** | _string_ | **_Optional_** | **_null_** |
-| **_metric\_query_** | _Enables you to create an alarm based on a metric math expression. You may specify at most 20._ | **_string_** | **_Optional_** | **_null_** |
+| **_metric\_query_** | _Enables you to create an alarm based on a metric math expression. You may specify at most 20._ | _string_ | **_Optional_** | **_null_** |
 | **_tags_** | _A map of tags to assign to the resource._ | _map(string)_ | **_Optional_** | **_{}_** |
 
 
