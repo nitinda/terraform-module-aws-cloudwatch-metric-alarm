@@ -79,16 +79,16 @@ _The variables required in order for the module to be successfully called from t
 | **_threshold\_metric\_id_** | _If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY\_DETECTION\_BAND function_ | _string_ | **_Optional_** | **_null_** |
 | **_actions\_enabled_** | _Indicates whether or not actions should be executed during any changes to the alarm's state. Defaults to **_true_**_ | _boolean_ | **_Optional_** | **_true_** |
 | **_alarm\_actions_** | _The list of actions to execute when this alarm transitions into an ALARM state from any other state. Each action is specified as an Amazon Resource Name (ARN)._ | _string_ | **_Optional_** | **_null_** |
-| **_alarm\_description_** | _The description for the alarm_ | **_Optional_** | **_null_** |
-| **_datapoints\_to\_alarm_** | _The number of datapoints that must be breaching to trigger the alarm._ | **_Optional_** | **_null_** |
-| **_dimensions_** | _The dimensions for the alarm's associated metric. For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html)._ | **_Optional_** | **_null_** |
-| **_alarm\_description_** | _The description for the alarm_ | **_Optional_** | **_null_** |
-| **_insufficient\_data\_actions_** | _The description for the alarm_ | **_Optional_** | **_null_** |
-| **_alarm\_description_** | _The list of actions to execute when this alarm transitions into an INSUFFICIENT\_DATA state from any other state. Each action is specified as an Amazon Resource Name (ARN)._ | **_Optional_** | **_null_** |
-| **_ok\_actions_** | _The list of actions to execute when this alarm transitions into an OK state from any other state. Each action is specified as an Amazon Resource Name (ARN)._ | **_Optional_** | **_null_** |
-| **_unit_** | _The unit for the alarm's associated metric_ | **_Optional_** | **_null_** |
-| **_extended\_statistic_** | _The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100._ | **_Optional_** | **_null_** |
-| **_treat\_missing\_data_** | _Sets how this alarm is to handle missing data points. The following values are supported:_ **_missing_**_,_ **_ignore_**_,_ **_breaching_** _and_ **_notBreaching_**_. Defaults to_ **_missing_** | **_Optional_** | **_missing_** |
+| **_alarm\_description_** | _The description for the alarm_ | _string_ | **_Optional_** | **_null_** |
+| **_datapoints\_to\_alarm_** | _The number of datapoints that must be breaching to trigger the alarm._ | _string_ | **_Optional_** | **_null_** |
+| **_dimensions_** | _The dimensions for the alarm's associated metric. For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html)._ | _string_ | **_Optional_** | **_null_** |
+| **_alarm\_description_** | _The description for the alarm_ | _string_ | **_Optional_** | **_null_** |
+| **_insufficient\_data\_actions_** | _The description for the alarm_ | _string_ | **_Optional_** | **_null_** |
+| **_alarm\_description_** | _The list of actions to execute when this alarm transitions into an INSUFFICIENT\_DATA state from any other state. Each action is specified as an Amazon Resource Name (ARN)._ | _string_ | **_Optional_** | **_null_** |
+| **_ok\_actions_** | _The list of actions to execute when this alarm transitions into an OK state from any other state. Each action is specified as an Amazon Resource Name (ARN)._ | _string_ | **_Optional_** | **_null_** |
+| **_unit_** | _The unit for the alarm's associated metric_ | **_Optional_** | _string_ | **_null_** |
+| **_extended\_statistic_** | _The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100._ | _string_ | **_Optional_** | **_null_** |
+| **_treat\_missing\_data_** | _Sets how this alarm is to handle missing data points. The following values are supported:_ **_missing_**_,_ **_ignore_**_,_ **_breaching_** _and_ **_notBreaching_**_. Defaults to_ **_missing_** | _string_ | **_Optional_** | **_missing_** |
 | **_evaluate\_low\_sample\_count\_percentiles_** | _Used only for alarms based on percentiles. If you specify ignore, the alarm state will not change during periods with too few data points to be statistically significant. If you specify evaluate or omit this parameter, the alarm will always be evaluated and possibly change state no matter how many data points are available. The following values are supported:_ **_ignore_**_, and_ **_evaluate_** | **_string_** | **_Optional_** | **_null_** |
 | **_metric\_query_** | _Enables you to create an alarm based on a metric math expression. You may specify at most 20._ | **_string_** | **_Optional_** | **_null_** |
 | **_tags_** | _A map of tags to assign to the resource._ | **_map(string)_** | **_Optional_** | **_{}_** |
