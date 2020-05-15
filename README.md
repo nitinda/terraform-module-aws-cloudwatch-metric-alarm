@@ -53,8 +53,10 @@ _Below we are able to check the resources that are being created as part of this
 
 _To use this module, add the following call to your code:_
 
-
-
+* **_Example Usage_**
+* **_Example in Conjunction with Scaling Policies_**
+* **_Example with an Expression_**
+* **_Example of monitoring Healthy Hosts on NLB using Target Group and NLB_**
 ---
 
 ## _Inputs_
