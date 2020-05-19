@@ -56,8 +56,113 @@ _To use this module, add the following call to your code:_
 * **_Example Usage_**
 
 * **_Example in Conjunction with Scaling Policies_**
+```tf
+module "cloudwatch_metric_alarm_up" {
+  source = "git::https://github.com/nitinda/terraform-module-aws-cloudwatch-metric-alarm.git?ref=master"
+
+  providers = {
+    aws = aws.services
+  }
+
+  alarm_name          = "AlarmHigh"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = "2"
+  metric_name         = "CPUUtilization"
+  namespace           = "AWS/EC2"
+  period              = "120"
+  statistic           = "Average"
+  threshold           = "80"
+  alarm_description   = "This metric monitors ec2 cpu utilization"
+  
+}
+```
+
 * **_Example with an Expression_**
+
+```tf
+module "cloudwatch_metric_alarm_up" {
+  source = "git::https://github.com/nitinda/terraform-module-aws-cloudwatch-metric-alarm.git?ref=master"
+
+  providers = {
+    aws = aws.services
+  }
+
+  alarm_name          = "AlarmHigh"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = "2"
+  metric_name         = "CPUUtilization"
+  namespace           = "AWS/EC2"
+  period              = 60
+  statistic           = "Average"
+  threshold           = 20
+  datapoints_to_alarm = 1
+
+  dimensions = {
+    AutoScalingGroupName = module.autoscaling_group.name
+  }
+
+  alarm_description = "This metric monitors ec2 cpu utilization"
+  alarm_actions     = [ module.aws_autoscaling_policy.arn ]
+  
+}
+```
+
 * **_Example of monitoring Healthy Hosts on NLB using Target Group and NLB_**
+```tf
+module "cloudwatch_metric_alarm_up" {
+  source = "git::https://github.com/nitinda/terraform-module-aws-cloudwatch-metric-alarm.git?ref=master"
+
+  providers = {
+    aws = aws.services
+  }
+
+  alarm_name          = "AlarmHigh"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = "2"
+  threshold           = "10"
+  alarm_description   = "Request error rate has exceeded 10%"
+
+  metric_query {
+    id          = "e1"
+    expression  = "m2/m1*100"
+    label       = "Error Rate"
+    return_data = "true"
+  }
+
+  metric_query {
+    id = "m1"
+
+    metric {
+      metric_name = "RequestCount"
+      namespace   = "AWS/ApplicationELB"
+      period      = "120"
+      stat        = "Sum"
+      unit        = "Count"
+
+      dimensions = {
+        LoadBalancer = "app/web"
+      }
+    }
+  }
+
+  metric_query {
+    id = "m2"
+
+    metric {
+      metric_name = "HTTPCode_ELB_5XX_Count"
+      namespace   = "AWS/ApplicationELB"
+      period      = "120"
+      stat        = "Sum"
+      unit        = "Count"
+
+      dimensions = {
+        LoadBalancer = "app/web"
+      }
+    }
+  }
+  
+}
+```
 
 ---
 
